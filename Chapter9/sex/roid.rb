@@ -161,7 +161,7 @@ class Roid
   end
 
   def procreate
-    if attractive and @sex == :female
+    if attractive and female?
       # check for potential nearby mates
       r = $roids.sort {|a,b| self.distance_from(a) <=> self.distance_from(b)}
       roids = r.first(MAGIC_NUMBER)
