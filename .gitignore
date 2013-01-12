@@ -8,6 +8,9 @@
 *.Rout
 
 *.csv
+#ただし、Chapter7/oximetry/*.csvだけはignoreしない。
+!Chatper7/oximetry/*.csv
+
 *.pdf
 
 
