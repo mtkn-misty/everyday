@@ -1,17 +1,7 @@
-library(ggplot2)
+sim1_data <- read.table("simulation1.csv", header=TRUE, sep=",")
+sim1_data_x70 <- sim1_data$X70
 
-pdf("figure4-9.pdf")
+sim3_1_data <- read.table("simulation3-1.csv", header=TRUE, sep=",")
+sim3_1_data_x70 <- sim3_1_data$X70
 
-df <- function(sim) {
-  data <- read.table(paste(sim,".csv",sep=""), header=TRUE, sep=",")
-  max  <- apply(data,2,max)
-  return(data.frame(population=seq(from=10,to=600,by=10),max=max))
-}
-
-ggplot() + scale_shape_manual(name="Type", values=c(2,3,4,22)) + 
-  geom_smooth(data = df("simulation3"), aes(x=population,y=max)) +
-  geom_point(data  = df("simulation3"), aes(x=population,y=max,shape="max-1x12")) +
-  geom_smooth(data = df("simulation3-4"), aes(x=population,y=max)) +
-  geom_point(data  = df("simulation3-4"), aes(x=population,y=max,shape="max-4x3")) +  
-  scale_y_continuous("queue size") +
-  scale_x_continuous("population")
+ks.test(sim1_data_x70, sim3_1_data_x70)
